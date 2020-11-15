@@ -11,7 +11,7 @@ echo VUE_APP_YOUTUBE_API_KEY=AIzaSyDCF... > .env
 ```
 > **_NOTE:_** You can generate your YouTube API credentials @ https://console.developers.google.com/
 
-### Run the project
+## Run the project
 ```
 npm run serve
 ```

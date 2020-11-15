@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input @input="onInput"/>
+    <input @keyup.enter="onChange"/>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'SearchBar',
   methods: {
-    onInput(e) {
+    onChange(e) {
       this.$emit('term-change', e.target.value);
     }
   }
