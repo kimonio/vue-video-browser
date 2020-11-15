@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <search-bar @term-change="onTermChange"></search-bar>
-    <video-list :videos="videos"></video-list>
+    <div class="row">
+      <video-detail :video="selectedVideo"></video-detail>
+      <video-list :videos="videos" @video-select="onVideoSelect"></video-list>
+    </div>
   </div>
 </template>
 
@@ -9,21 +12,23 @@
 import axios from 'axios';
 import SearchBar from './components/SearchBar.vue';
 import VideoList from './components/VideoList.vue';
+import VideoDetail from './components/VideoDetail.vue';
 
 export default {
   name: 'App',
   components: {
     SearchBar,
-    VideoList
+    VideoList,
+    VideoDetail
   },
   data() {
     return {
-      videos: []
+      videos: [],
+      selectedVideo: null
     }
   },
   methods: {
     onTermChange(searchTerm) {
-      console.log("firing request");
       axios.get('https://www.googleapis.com/youtube/v3/search', {
         params: {
           key: process.env.VUE_APP_YOUTUBE_API_KEY,
@@ -33,6 +38,9 @@ export default {
         }
       })
       .then(response => this.videos = response.data.items);
+    },
+    onVideoSelect(video) {
+      this.selectedVideo = video;
     }
   }
 }
