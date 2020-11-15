@@ -1,4 +1,5 @@
 # Youtube Video Browser
+![app screenshot](./images/screenshot.png?raw=true "app screenshot")
 
 ## Project setup
 - Install the required dependencies
